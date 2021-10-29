@@ -13,12 +13,16 @@
 <body>
     <button type="button" id="btn">Start</button>
     <script>
+
+        // Função para box de audio
         $(function () {
             let mediaRecorder
+            // Funções de som
             navigator
                 .mediaDevices
                 .getUserMedia({ audio: true })
                 .then(stream => {
+                    // Objeto de stream da musica
                     mediaRecorder = new MediaRecorder(stream)
 
                     let chunks = []
@@ -42,6 +46,7 @@
                 }, err => {
                     $('body').append('<p>Você deve permitir o audio</p>')
                 })
+            // Botões
             $('#btn').click(function () {
                 if ($(this).text() === 'Start') {
                     mediaRecorder.start()
@@ -54,7 +59,6 @@
             })
         })
     </script>
-
 
 </body>
 
